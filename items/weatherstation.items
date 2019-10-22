@@ -1,0 +1,14 @@
+Number Weatherstation_Chart_Period "Periode" (System)
+
+Group  Weatherstation_Chart (System, Charts)
+Number Weatherstation_Temperature_S1 "Temperature (S1) [%.1f °C]" <temperature> (Weatherstation_Chart)
+Number Weatherstation_Temperature_S2 "Temperature (S2) [%.1f °C]" <temperature> (Weatherstation_Chart)
+
+Group Weatherstation_Chart_Humidity (System, Charts)
+Number Weatherstation_Humidity_S1 "Humidity (S1) [%.1f %%]" <humidity> (Weatherstation_Chart_Humidity)
+Number Weatherstation_Humidity_S2 "Humidity (S2) [%.1f %%]" <humidity> (Weatherstation_Chart_Humidity)
+
+String temperature_out_s1 { channel="exec:command:weatherstation_temperature_s1:output" }
+String temperature_out_s2 { channel="exec:command:weatherstation_temperature_s2:output" }
+String humidity_out_s1    { channel="exec:command:weatherstation_humidity_s1:output" }
+String humidity_out_s2    { channel="exec:command:weatherstation_humidity_s2:output" }

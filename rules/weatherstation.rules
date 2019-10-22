@@ -1,0 +1,35 @@
+rule "Weatherstation Temperature Sensor 1"
+  when
+     Item temperature_out_s1 received update
+  then
+      Weatherstation_Temperature_S1.postUpdate(
+          ( ( Float::parseFloat(temperature_out_s1.state.toString) as Number ) * 10 ) / 10
+      )
+end
+ 
+rule "Weatherstation Humidity Sensor 1"
+  when
+     Item humidity_out_s1 received update
+  then
+      Weatherstation_Humidity_S1.postUpdate(
+          ( ( Float::parseFloat(humidity_out_s1.state.toString) as Number ) * 10 ) / 10
+      )
+end
+
+rule "Weatherstation Temperature Sensor 2"
+  when
+     Item temperature_out_s2 received update
+  then
+      Weatherstation_Temperature_S2.postUpdate(
+          ( ( Float::parseFloat(temperature_out_s2.state.toString) as Number ) * 10 ) / 10
+      )
+end
+ 
+rule "Weatherstation Humidity Sensor 2"
+  when
+     Item humidity_out_s2 received update
+  then
+      Weatherstation_Humidity_S2.postUpdate(
+          ( ( Float::parseFloat(humidity_out_s2.state.toString) as Number ) * 10 ) / 10
+      )
+end

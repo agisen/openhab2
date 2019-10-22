@@ -1,0 +1,5 @@
+Thing exec:command:weatherstation_temperature_s1 "Temperature Sensor 1"    [command="/etc/openhab2/scripts/weatherstation.py temperature", transform="REGEX((.*?))", interval=10, timeout=10, autorun=true]
+Thing exec:command:weatherstation_humidity_s1    "Humidity Sensor 1"       [command="/etc/openhab2/scripts/weatherstation.py humidity",    transform="REGEX((.*?))", interval=30, timeout=10, autorun=true]
+
+Thing exec:command:weatherstation_temperature_s2 "Temperature Sensor 2"    [command="/etc/openhab2/scripts/sht.py temp", transform="REGEX((.*?))", interval=10, timeout=10, autorun=true]
+Thing exec:command:weatherstation_humidity_s2    "Humidity Sensor 2"       [command="/etc/openhab2/scripts/sht.py hum",  transform="REGEX((.*?))", interval=30, timeout=10, autorun=true]
