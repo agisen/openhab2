@@ -14,6 +14,8 @@ how to display the temperature & humidity values of up to two SHT75 sensors conn
     * Look in „Persistence“ for „RRD4j Persistence“
     * Look in „Transformations“ for „RegEx Transformation“
   * Copy the files from https://github.com/agisen/rapi_weather to the corresponding folders in /etc/openhab2/
+  * Ensure ownership of these files, especcially make the scripts excecutable:
+    * sudo chmod +x /etc/openhab2/scripts/sht.py
   * To make openHAB automatically start after booting the Linux host
   `sudo systemctl daemon-reload`
   `sudo systemctl enable openhab2.service`
