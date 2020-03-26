@@ -1,35 +1,42 @@
 rule "Weatherstation Temperature Sensor 1"
   when
-     Item temperature_out_s1 received update
+     Item temperature_s1_out received update
   then
       Weatherstation_Temperature_S1.postUpdate(
-          ( ( Float::parseFloat(temperature_out_s1.state.toString) as Number ) * 10 ) / 10
+          ( ( Float::parseFloat(temperature_s1_out.state.toString) as Number ) * 10 ) / 10
       )
+ 
 end
  
 rule "Weatherstation Humidity Sensor 1"
   when
-     Item humidity_out_s1 received update
+     Item humidity_s1_out received update
   then
       Weatherstation_Humidity_S1.postUpdate(
-          ( ( Float::parseFloat(humidity_out_s1.state.toString) as Number ) * 10 ) / 10
+          ( ( Float::parseFloat(humidity_s1_out.state.toString) as Number ) * 10 ) / 10
       )
 end
 
-rule "Weatherstation Temperature Sensor 2"
+rule "Weatherstation Temperature and Humidity Sensor 1"
   when
-     Item temperature_out_s2 received update
+     Item temperature_and_humidity_s1_out received update
   then
-      Weatherstation_Temperature_S2.postUpdate(
-          ( ( Float::parseFloat(temperature_out_s2.state.toString) as Number ) * 10 ) / 10
+      Weatherstation_Temperature_S1.postUpdate(
+          Float::parseFloat(temperature_and_humidity_s1_out.state.toString.split(",").get(0)) as Number
+      )
+      Weatherstation_Humidity_S1.postUpdate(
+          Float::parseFloat(temperature_and_humidity_s1_out.state.toString.split(",").get(1)) as Number
       )
 end
- 
-rule "Weatherstation Humidity Sensor 2"
+
+rule "Weatherstation Temperature and Humidity Sensor 2"
   when
-     Item humidity_out_s2 received update
+     Item temperature_and_humidity_s2_out received update
   then
+      Weatherstation_Temperature_S2.postUpdate(
+          Float::parseFloat(temperature_and_humidity_s2_out.state.toString.split(",").get(0)) as Number
+      )
       Weatherstation_Humidity_S2.postUpdate(
-          ( ( Float::parseFloat(humidity_out_s2.state.toString) as Number ) * 10 ) / 10
+          Float::parseFloat(temperature_and_humidity_s2_out.state.toString.split(",").get(1)) as Number
       )
 end

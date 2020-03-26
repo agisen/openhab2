@@ -1,15 +1,15 @@
 Strategies {
     // for rrd charts, we need a cron strategy, every Minute is a must have.
-    everyMinute	: "0 * * * * ?"
+    everyMinute : "0 * * * * ?"
     // get the data reduced for older values to keep database small
-    everyHour	: "0 0 * * * ?"
-    everyDay	: "0 0 0 * * ?"
+    everyHour   : "0 0 * * * ?"
+    everyDay    : "0 0 0 * * ?"
     
     default = everyChange
 }
  
 Items {
     // additionally persist Items
-    Weatherstation_Chart* : strategy = everyMinute
-    Weatherstation_Chart_Humidity* : strategy = everyMinute
+    Weatherstation_Chart_Temperature* : strategy = everyUpdate, everyMinute
+    Weatherstation_Chart_Humidity* : strategy = everyUpdate, everyMinute
 }
